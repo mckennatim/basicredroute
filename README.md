@@ -1,5 +1,5 @@
 # basic redux routing
-A stripped down example of `react`, `redux`, `react-router` and `redux-simple router` drawn from the `example/basic` of `redux-simple-router`
+A stripped down example of `react`, `redux`, `react-router` and `redux-simple router` drawn from the `example/basic` of `<a href="https://github.com/rackt/redux-simple-router">redux-simple-router</a>`
 
 <blockquote>
 This is a basic example that demonstrates rendering components based
