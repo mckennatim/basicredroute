@@ -1,15 +1,13 @@
-const constants = require('../constants');
-
 function increase(n) {
   return {
-    type: constants.INCREASE,
+    type: 'INCREASE',
     amount: n
   };
 }
 
 function decrease(n) {
   return {
-    type: constants.DECREASE,
+    type: 'DECREASE',
     amount: n
   };
 }
