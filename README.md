@@ -1,5 +1,95 @@
 # redux/sb/hrs/client
-## tag: 1-changed-component-names
+## tag: 02-added-testing
+and fake data `test/mockData.js` and get setup for testing
+
+    npm install --save-dev mocha chai
+    npm install --save immutable
+    npm install --save-dev chai-immutable
+We need to let plug in chai-immutable before any tests are run. That we can do in a little test helper file, which should create next:
+
+test/test_helper.js
+
+    import chai from 'chai';
+    import chaiImmutable from 'chai-immutable';
+    chai.use(chaiImmutable);
+
+to package.json add a couple of scripts
+
+    "babel": {
+      "presets": [
+        "es2015",
+        "react"
+      ]
+    },
+    scripts: {
+      "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js  --recursive --slow 4",
+      "test:watch": "npm run test -- --watch" ...
+
+add a first test `test1.spec.js`
+
+    import {expect} from 'chai';
+    import {List, Map, fromJS} from 'immutable';
+    describe("an immutable map",()=>{
+      describe("a map",()=>{
+        it("modifies a map", ()=>{
+          let state = new Map({panel: "auto", relay: "on", by: 'forecast'})
+          let nextState = state.update("by", b=>'user')
+          expect(state.get('by')).to.equal("forecast")
+          expect(nextState.get('by')).to.equal("user")
+          //console.log(nextState)
+        });
+        it("modifies a bigger map", ()=>{
+          let state = fromJS({ctrl: {panel: "auto", relay: "on", by: 'forecast'},
+            cond: {temp: 67, sky: "cloudy"},
+            forecast: {isSnow: true, when: "now", accum: 10}});
+          let nextState = state.setIn(['ctrl', 'by'], 'user')
+          //console.log(state)
+          expect(state.getIn(['ctrl', 'by'])).to.equal("forecast")
+          expect(nextState.getIn(['ctrl', 'by'])).to.equal("user")
+          //console.log(nextState)
+        })
+      })
+    })
+
+btw: `webpack.config.js` should now look like...
+
+    const path = require('path');
+    module.exports = {
+      entry: './app.js',
+      output: {
+        path: path.join(__dirname, 'dist'),
+        filename: 'bundle.js'
+      },
+      module: {
+        loaders: [{
+          test: /\.jsx?$/,
+          loaders: ['babel?presets[]=react,presets[]=es2015'],
+          exclude: /node_modules/,
+          include: __dirname
+        }]
+      },
+      resolve: {
+        extensions: ['', '.js', '.jsx']
+      },  
+    }
+
+## tag: 01-changed-component-names
+Using tagging to checkout prior stuff. After each commit
+
+    git tag 01-changed-component-names
+    git push --tags
+to list tags
+
+    git tag
+to go back to tagged code... If you are in the midst of changes you haven't committed then `git stash` them before you ...
+
+    git stash
+    git checkout tagname
+then to get back to where you were
+
+    git checkout master
+    git stash apply
+
 ## tag: 0-basicredroute
  Based upon stripped down example of `react`, `redux`, `react-router` and `redux-simple router` drawn from the `basicredroute` of <a href="https://github.com/rackt/redux-simple-router">basicredroute</a>
 

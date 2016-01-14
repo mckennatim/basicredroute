@@ -8,11 +8,14 @@ module.exports = {
   },
   module: {
     loaders: [{
-      test: /\.js$/,
+      test: /\.jsx?$/,
       loaders: ['babel?presets[]=react,presets[]=es2015'],
       exclude: /node_modules/,
       include: __dirname
     }]
-  }
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },  
 }
 
