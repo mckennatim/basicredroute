@@ -1,5 +1,7 @@
-# basic redux routing
-A stripped down example of `react`, `redux`, `react-router` and `redux-simple router` drawn from the `example/basic` of <a href="https://github.com/rackt/redux-simple-router">redux-simple-router</a>
+# redux/sb/hrs/client
+## tag: 1-changed-component-names
+## tag: 0-basicredroute
+ Based upon stripped down example of `react`, `redux`, `react-router` and `redux-simple router` drawn from the `basicredroute` of <a href="https://github.com/rackt/redux-simple-router">basicredroute</a>
 
 <blockquote>
 This is a basic example that demonstrates rendering components based

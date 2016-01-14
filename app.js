@@ -6,7 +6,7 @@ const { Router, Route, IndexRoute } = require('react-router');
 const createHistory = require('history/lib/createHashHistory');
 const { syncReduxAndRouter, routeReducer } = require('redux-simple-router');
 const reducers = require('./reducers');
-const { App, Home, Foo, Bar } = require('./components');
+const { App, Home, Ver, Unver } = require('./components');
 
 const reducer = combineReducers(Object.assign({}, reducers, {
   routing: routeReducer
@@ -22,11 +22,11 @@ ReactDOM.render(
       <Router history={history}>
         <Route path="/" component={App}>
           <IndexRoute component={Home}/>
-          <Route path="foo" component={Foo}/>
-          <Route path="bar" component={Bar}/>
+          <Route path="ver" component={Ver}/>
+          <Route path="unver" component={Unver}/>
         </Route>
       </Router>
     </div>
   </Provider>,
-  document.getElementById('mount')
+  document.getElementById('app')
 );

@@ -1,6 +1,6 @@
 const App = require('./App');
 const Home = require('./Home');
-const Foo = require('./Foo');
-const Bar = require('./Bar');
+const Ver = require('./Ver');
+const Unver = require('./Unver');
 
-module.exports = { App, Home, Foo, Bar };
+module.exports = { App, Home, Ver, Unver };

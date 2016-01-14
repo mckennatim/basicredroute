@@ -11,12 +11,12 @@ function App({ pushPath, children }) {
         {' '}
         <Link to="/">Home</Link>
         {' '}
-        <Link to="/foo">Foo</Link>
+        <Link to="/ver">Ver</Link>
         {' '}
-        <Link to="/bar">Bar</Link>
+        <Link to="/unver">Unver</Link>
       </header>
       <div>
-        <button onClick={() => pushPath('/foo')}>Go to /foo</button>
+        <button onClick={() => pushPath('/ver')}>Go to /ver</button>
       </div>
       <div style={{marginTop: '1.5em'}}>{children}</div>
     </div>
